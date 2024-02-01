@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  python:
+    image: jinkyoungheo/python3:3.8-flask
+    networks:
+      - java_ai_net
+    volumes:
+      - ./myapp:/home/user1/myapp
+    ports:
+      - 5000:5000
+
+  java:
+    image: jinkyoungheo/tomcat9
+    networks:
+      - java_ai_net
+    volumes:
+      - ./webapps:/usr/local/tomcat/webapps
+    ports:
+      - 8888:8080
+
+networks:
+  java_ai_net:
+
+
